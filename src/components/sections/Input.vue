@@ -1,6 +1,6 @@
 <template>
   <div>
-      <input type="text" v-model="inputSearch">
+      <input placeholder="Digita la tua ricerca" type="text" v-model="inputSearch">
       <button @click="$emit('cerca', inputSearch), svuota()">Cerca</button>
   </div>
 </template>
@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style>
-
+    input{
+        margin-bottom: 10px;
+    }
 </style>
