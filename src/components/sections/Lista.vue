@@ -12,7 +12,7 @@
                     <img v-else-if="elementi.original_language == 'es'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1024px-Flag_of_Spain.svg.png" alt="">
                     <img v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/International_Flag_of_Planet_Earth.svg/1280px-International_Flag_of_Planet_Earth.svg.png" alt="">
                 </li>
-                <li>VOTO: {{elementi.vote_average}}</li>
+                <li>VOTO: {{elementi.vote_average}}/10</li>
             </ul>
 
             <h1 v-if="series.length>0">Serie Tv</h1>
@@ -39,7 +39,21 @@ export default {
     props:{
         film :Array,
         series :Array
-    }
+    },
+
+    //Metodo migliore assumendo di avere immagini salvate in locale 
+    //(in HTML <li><img :src="require(`../assets/${getFlag(element.lingua)}.png`)" alt=""></li>)
+    //getFlag mi tira fuori la variabile urlFlag che sarà it en o altro e la aggiunge alla stringa di src
+
+    // methods: {
+    //     getFlag: function(language){
+    //         let urlFlag = "jolly";
+    //         if(['it','en'].includes(language)){
+    //             urlFlag = language;
+    //         }
+    //         return urlFlag;
+    //     }
+    // }
 }
 </script>
 

@@ -22,7 +22,5 @@ export default {
 </script>
 
 <style>
-    input{
-        margin-bottom: 10px;
-    }
+    
 </style>
