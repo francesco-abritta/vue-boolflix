@@ -12,7 +12,12 @@
                     <img class="lingua" v-else-if="elementi.original_language == 'es'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1024px-Flag_of_Spain.svg.png" alt="">
                     <img class="lingua" v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/International_Flag_of_Planet_Earth.svg/1280px-International_Flag_of_Planet_Earth.svg.png" alt="">
                 </li>
-                <li>VOTO: {{elementi.vote_average}}/10</li>
+                <li>
+                    STELLE: 
+                    <span v-for="stellina in stelline(elementi.vote_average)" :key="'piena'+stellina">*</span>
+                    <span v-for="stellina in (5-stelline(elementi.vote_average))" :key="'vuota'+stellina">- </span>
+                    <span>{{elementi.vote_average}}</span>
+                </li>
                 <li>POSTER: <img :src="linkImg + 'w342/' + elementi.poster_path" alt=""></li>
             </ul>
 
@@ -27,7 +32,12 @@
                     <img class="lingua" v-else-if="elements.original_language == 'es'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1024px-Flag_of_Spain.svg.png" alt="">
                     <img class="lingua" v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/International_Flag_of_Planet_Earth.svg/1280px-International_Flag_of_Planet_Earth.svg.png" alt="">
                 </li>
-                <li>VOTO: {{elements.vote_average}}</li>
+                <li>
+                    STELLE: 
+                    <span v-for="stella in stelline(elements.vote_average)" :key="'piena'+stella">*</span>
+                    <span v-for="stella in (5-stelline(elements.vote_average))" :key="'vuota'+stella">- </span>
+                    <span>{{elements.vote_average}}</span>
+                </li>
                 <li>POSTER: <img :src="linkImg + 'w342/' + elements.poster_path" alt=""></li>
             </ul>
 
@@ -47,6 +57,11 @@ export default {
         film :Array,
         series :Array
     },
+    methods: {
+        stelline:function(voto){
+            return Math.ceil(voto/2);
+        }
+    }
 
     //Metodo migliore per le img assumendo di avere immagini salvate in locale 
     //(in HTML <li><img :src="require(`../assets/${getFlag(element.lingua)}.png`)" alt=""></li>)
