@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div class="header">
-      <Logo />
       <Header @filtraAncora="filtrati"/>
     </div>
     <div class="main">
@@ -11,7 +10,6 @@
 </template>
 
 <script>
-import Logo from './components/sections/Logo.vue'
 import Lista from './components/sections/Lista.vue'
 import Header from './components/Header.vue'
 import axios from 'axios'
@@ -21,7 +19,6 @@ export default {
   components: {
     Lista,
     Header,
-    Logo
   },
   data() {
       return {
