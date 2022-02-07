@@ -1,47 +1,63 @@
 <template>
   <div>
-      <div class="lista">
-            <h1 v-if="film.length>0">Film</h1>
-            <ul v-for="(elementi,indice) in film" :key="'film'+indice">
-                <li>TITOLO: {{elementi.title}}</li>
-                <li>TITOLO ORIGINALE: {{elementi.original_title}}</li>
-                <li>
-                    LINGUA: 
-                    <img class="lingua" v-if="elementi.original_language == 'it'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/2560px-Flag_of_Italy.svg.png" alt="">
-                    <img class="lingua" v-else-if="elementi.original_language == 'en'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/640px-Flag_of_the_United_Kingdom.svg.png" alt="">
-                    <img class="lingua" v-else-if="elementi.original_language == 'es'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1024px-Flag_of_Spain.svg.png" alt="">
-                    <img class="lingua" v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/International_Flag_of_Planet_Earth.svg/1280px-International_Flag_of_Planet_Earth.svg.png" alt="">
-                </li>
-                <li>
-                    STELLE: 
-                    <span v-for="stellina in stelline(elementi.vote_average)" :key="'piena'+stellina">*</span>
-                    <span v-for="stellina in (5-stelline(elementi.vote_average))" :key="'vuota'+stellina">- </span>
-                    <span>{{elementi.vote_average}}</span>
-                </li>
-                <li>POSTER: <img :src="linkImg + 'w342/' + elementi.poster_path" alt=""></li>
-            </ul>
+        <h1 v-if="film.length>0">Film</h1>
+        <div class="listaFilm">
+            <div class="itemFilm" v-for="(elementi,indice) in film" :key="'film'+indice">
+                <img v-if='elementi.poster_path!=null' :src="linkImg + 'w342/' + elementi.poster_path" alt="">
+                <img class="notFound" v-else src="../../assets/img/notfound.jpeg" alt="">
+                <div class="info">
+                    <ul>
+                        <li>
+                            <strong>TITOLO: </strong> {{elementi.title}}
+                        </li>
+                        <li> 
+                            <strong>TITOLO ORIGINALE: </strong> {{elementi.original_title}}
+                        </li>
+                        <li>
+                            <strong>LINGUA: </strong> <img class="lingua" :src="require(`../../assets/img/${getFlag(elementi.original_language)}.png`)" alt="">
+                        </li>
+                        <li>
+                            <strong>STELLE: </strong> 
+                            <span v-for="stellina in stelline(elementi.vote_average)" :key="'piena'+stellina">*</span>
+                            <span v-for="stellina in (5-stelline(elementi.vote_average))" :key="'vuota'+stellina">- </span>
+                        </li>
+                        <li v-if='elementi.overview!=""'>
+                            <strong>OVEVIEW: </strong> {{elementi.overview}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
 
-            <h1 v-if="series.length>0">Serie Tv</h1>
-            <ul v-for="(elements,index) in series" :key="'serie'+index">
-                <li>TITOLO: {{elements.name}}</li>
-                <li>TITOLO ORIGINALE: {{elements.original_name}}</li>
-                <li>
-                    LINGUA: 
-                    <img class="lingua" v-if="elements.original_language == 'it'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/2560px-Flag_of_Italy.svg.png" alt="">
-                    <img class="lingua" v-else-if="elements.original_language == 'en'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/640px-Flag_of_the_United_Kingdom.svg.png" alt="">
-                    <img class="lingua" v-else-if="elements.original_language == 'es'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/1024px-Flag_of_Spain.svg.png" alt="">
-                    <img class="lingua" v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/International_Flag_of_Planet_Earth.svg/1280px-International_Flag_of_Planet_Earth.svg.png" alt="">
-                </li>
-                <li>
-                    STELLE: 
-                    <span v-for="stella in stelline(elements.vote_average)" :key="'piena'+stella">*</span>
-                    <span v-for="stella in (5-stelline(elements.vote_average))" :key="'vuota'+stella">- </span>
-                    <span>{{elements.vote_average}}</span>
-                </li>
-                <li>POSTER: <img :src="linkImg + 'w342/' + elements.poster_path" alt=""></li>
-            </ul>
-
-      </div>
+        <h1 v-if="series.length>0">Serie Tv</h1>
+        <div class="listaSerie">
+            <div class="itemSerie" v-for="(elements,index) in series" :key="'serie'+index">
+                <img v-if='elements.poster_path!=null' :src="linkImg + 'w342/' + elements.poster_path" alt="">
+                <img class="notFound" v-else src="../../assets/img/notfound.jpeg" alt="">
+                <div class="info">
+                    <ul>
+                        <li>
+                            <strong>TITOLO: </strong> {{elements.name}}
+                        </li>
+                        <li>
+                            <strong>TITOLO ORIGINALE: </strong> {{elements.original_name}}
+                        </li>
+                        <li>
+                            <strong>LINGUA: </strong> <img class="lingua" :src="require(`../../assets/img/${getFlag(elements.original_language)}.png`)" alt="">
+                        </li>
+                        <li>
+                            <strong>STELLE: </strong>
+                            <span v-for="stella in stelline(elements.vote_average)" :key="'piena'+stella">*</span>
+                            <span v-for="stella in (5-stelline(elements.vote_average))" :key="'vuota'+stella">- </span>
+                        </li>
+                        <li v-if='elements.overview!=""'>
+                            <strong>OVEVIEW: </strong> {{elements.overview}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
   </div>
 </template>
 
@@ -60,32 +76,67 @@ export default {
     methods: {
         stelline:function(voto){
             return Math.ceil(voto/2);
+        },
+        getFlag: function(language){
+            let urlFlag = "other";
+            if(['it','en','es'].includes(language)){
+                urlFlag = language;
+            }
+            return urlFlag;
         }
     }
-
-    //Metodo migliore per le img assumendo di avere immagini salvate in locale 
-    //(in HTML <li><img :src="require(`../assets/${getFlag(element.lingua)}.png`)" alt=""></li>)
-    //getFlag mi tira fuori la variabile urlFlag che sarà it en o altro e la aggiunge alla stringa di src
-
-    // methods: {
-    //     getFlag: function(language){
-    //         let urlFlag = "jolly";
-    //         if(['it','en'].includes(language)){
-    //             urlFlag = language;
-    //         }
-    //         return urlFlag;
-    //     }
-    // }
 }
 </script>
 
-<style>
+<style scoped>
     ul{
         margin-bottom: 20px;
+        color: white;
+    }
+
+    li{
+        list-style: none;
+        margin-bottom: 10px;
+    }
+
+    h1{
+        margin: 30px 0px;
+        color: white;
+    }
+
+    strong{
+        font-size: 18px;
     }
 
     .lingua{
         height: 10px;
         width: 15px;
+    }
+
+    .listaFilm, .listaSerie{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .itemFilm, .itemSerie{
+        margin: 0px 40px;
+    }
+
+    .info{
+        width: 330px;
+        max-height: 500px;
+        padding: 10px;
+        overflow: scroll;
+        font-size: 15px;
+        background-color: rgba(0, 0, 0, 0.295);
+    }
+
+    .info::-webkit-scrollbar{
+        display: none;
+    }
+
+    .notFound, img{
+        width: 342px;
+        height: 513px;
     }
 </style>

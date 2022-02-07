@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="search">
+      <Logo />
       <Header @filtraAncora="filtrati"/>
     </div>
     <div class="main">
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import Logo from './components/sections/Logo.vue'
 import Lista from './components/sections/Lista.vue'
 import Header from './components/Header.vue'
 import axios from 'axios'
@@ -18,7 +20,8 @@ export default {
   name: 'App',
   components: {
     Lista,
-    Header
+    Header,
+    Logo
   },
   data() {
       return {
@@ -74,7 +77,14 @@ export default {
 <style lang="scss">
   @import './assets/global.scss';
   .main, .search{
-        padding: 20px;
+        padding: 10px 40px;
+        background-color: black;
+  }
+
+  .search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
 </style>
