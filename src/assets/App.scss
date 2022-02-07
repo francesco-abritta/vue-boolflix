@@ -1,4 +1,4 @@
-.main, .search{
+.main, .header{
     padding: 10px 40px;
     background-color: black;
 }
@@ -7,7 +7,7 @@
     min-height: calc(100vh - 123.5px);
 }
 
-.search{
+.header{
 display: flex;
 justify-content: space-between;
 align-items: center;

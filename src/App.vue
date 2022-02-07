@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="search">
+    <div class="header">
       <Logo />
       <Header @filtraAncora="filtrati"/>
     </div>

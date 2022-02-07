@@ -1,5 +1,6 @@
 <template>
   <div>
+      
         <h1 v-if="film.length>0">Film</h1>
         <div class="listaFilm">
             <div class="itemFilm" v-for="(elementi,indice) in film" :key="'film'+indice">
@@ -27,7 +28,6 @@
                     </ul>
                 </div>
             </div>
-            
         </div>
 
         <h1 v-if="series.length>0">Serie Tv</h1>
@@ -58,6 +58,7 @@
                 </div>
             </div>
         </div>
+
   </div>
 </template>
 
