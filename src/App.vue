@@ -76,15 +76,5 @@ export default {
 
 <style lang="scss">
   @import './assets/global.scss';
-  .main, .search{
-        padding: 10px 40px;
-        background-color: black;
-  }
-
-  .search{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
+  @import './assets/App.scss';
 </style>

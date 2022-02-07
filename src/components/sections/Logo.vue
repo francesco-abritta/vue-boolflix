@@ -12,7 +12,7 @@ export default {
 
 <style scoped>
     img{
-        height: 80px;
+        height: 100px;
         width: 200px;
     }
 </style>

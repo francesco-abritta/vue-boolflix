@@ -1,0 +1,62 @@
+ul{
+    margin-bottom: 20px;
+    color: white;
+}
+
+li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+h1{
+    margin: 30px 0px;
+    color: white;
+    font-size: 50px;
+}
+
+strong{
+    font-size: 18px;
+}
+
+.lingua{
+    height: 10px;
+    width: 15px;
+}
+
+.listaFilm, .listaSerie{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itemFilm, .itemSerie{
+    width: 342px;
+    max-height: 513px;
+    margin: 20px 40px;
+    position: relative;
+    cursor: pointer;
+}
+
+.infoFilm, .infoSerie{
+    width: 342px;
+    height: 513px;
+    padding: 10px;
+    overflow: scroll;
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0.705);
+    position: absolute;
+    z-index: -1;
+    top: 0;
+}
+
+.itemFilm:hover .infoFilm, .itemSerie:hover .infoSerie{
+    z-index: 2;
+}
+
+.infoFilm::-webkit-scrollbar, .infoSerie::-webkit-scrollbar{
+    display: none;
+}
+
+.notFound, .Found{
+    width: 342px;
+    height: 513px;
+}

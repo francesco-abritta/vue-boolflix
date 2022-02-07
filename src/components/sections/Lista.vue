@@ -3,9 +3,9 @@
         <h1 v-if="film.length>0">Film</h1>
         <div class="listaFilm">
             <div class="itemFilm" v-for="(elementi,indice) in film" :key="'film'+indice">
-                <img v-if='elementi.poster_path!=null' :src="linkImg + 'w342/' + elementi.poster_path" alt="">
+                <img class="Found" v-if='elementi.poster_path!=null' :src="linkImg + 'w342/' + elementi.poster_path" alt="">
                 <img class="notFound" v-else src="../../assets/img/notfound.jpeg" alt="">
-                <div class="info">
+                <div class="infoFilm">
                     <ul>
                         <li>
                             <strong>TITOLO: </strong> {{elementi.title}}
@@ -33,9 +33,9 @@
         <h1 v-if="series.length>0">Serie Tv</h1>
         <div class="listaSerie">
             <div class="itemSerie" v-for="(elements,index) in series" :key="'serie'+index">
-                <img v-if='elements.poster_path!=null' :src="linkImg + 'w342/' + elements.poster_path" alt="">
+                <img class="Found" v-if='elements.poster_path!=null' :src="linkImg + 'w342/' + elements.poster_path" alt="">
                 <img class="notFound" v-else src="../../assets/img/notfound.jpeg" alt="">
-                <div class="info">
+                <div class="infoSerie">
                     <ul>
                         <li>
                             <strong>TITOLO: </strong> {{elements.name}}
@@ -89,54 +89,5 @@ export default {
 </script>
 
 <style scoped>
-    ul{
-        margin-bottom: 20px;
-        color: white;
-    }
-
-    li{
-        list-style: none;
-        margin-bottom: 10px;
-    }
-
-    h1{
-        margin: 30px 0px;
-        color: white;
-    }
-
-    strong{
-        font-size: 18px;
-    }
-
-    .lingua{
-        height: 10px;
-        width: 15px;
-    }
-
-    .listaFilm, .listaSerie{
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .itemFilm, .itemSerie{
-        margin: 0px 40px;
-    }
-
-    .info{
-        width: 330px;
-        max-height: 500px;
-        padding: 10px;
-        overflow: scroll;
-        font-size: 15px;
-        background-color: rgba(0, 0, 0, 0.295);
-    }
-
-    .info::-webkit-scrollbar{
-        display: none;
-    }
-
-    .notFound, img{
-        width: 342px;
-        height: 513px;
-    }
+  @import '../../assets/Lista.scss';
 </style>
