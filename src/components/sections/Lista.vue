@@ -80,8 +80,14 @@ export default {
         },
         getFlag: function(language){
             let urlFlag = "other";
-            if(['it','en','es'].includes(language)){
-                urlFlag = language;
+            if(language=='it'){
+                urlFlag='it';
+            }
+            if(language=='en'){
+                urlFlag='en';
+            }
+            if(language=='es'){
+                urlFlag='es';
             }
             return urlFlag;
         }
