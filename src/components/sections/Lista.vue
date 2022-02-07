@@ -18,8 +18,8 @@
                         </li>
                         <li>
                             <strong>STELLE: </strong> 
-                            <span v-for="stellina in stelline(elementi.vote_average)" :key="'piena'+stellina">*</span>
-                            <span v-for="stellina in (5-stelline(elementi.vote_average))" :key="'vuota'+stellina">- </span>
+                            <span v-for="stellina in stelline(elementi.vote_average)" :key="'piena'+stellina"><i class="fas fa-star"></i></span>
+                            <span v-for="stellina in (5-stelline(elementi.vote_average))" :key="'vuota'+stellina"><i class="far fa-star"></i></span>
                         </li>
                         <li v-if='elementi.overview!=""'>
                             <strong>OVEVIEW: </strong> {{elementi.overview}}
@@ -48,8 +48,8 @@
                         </li>
                         <li>
                             <strong>STELLE: </strong>
-                            <span v-for="stella in stelline(elements.vote_average)" :key="'piena'+stella">*</span>
-                            <span v-for="stella in (5-stelline(elements.vote_average))" :key="'vuota'+stella">- </span>
+                            <span v-for="stella in stelline(elements.vote_average)" :key="'piena'+stella"><i class="fas fa-star"></i></span>
+                            <span v-for="stella in (5-stelline(elements.vote_average))" :key="'vuota'+stella"><i class="far fa-star"></i></span>
                         </li>
                         <li v-if='elements.overview!=""'>
                             <strong>OVEVIEW: </strong> {{elements.overview}}
