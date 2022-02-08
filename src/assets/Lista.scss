@@ -56,6 +56,11 @@ strong{
     display: none;
 }
 
+.infoFilm, .infoSerie {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
 .notFound, .Found{
     width: 342px;
     height: 513px;
